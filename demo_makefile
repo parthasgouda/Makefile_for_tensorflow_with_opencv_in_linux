@@ -1,0 +1,27 @@
+IDIR=include
+CXX=g++
+CFLAGS=-I$(IDIR) `pkg-config --cflags opencv tensorflow` -std=c++11
+ODIR=object
+SDIR=src
+
+OFILE:=$(shell basename $(CURDIR))
+LIBS=`pkg-config --libs opencv tensorflow`
+
+_OBJ:=$(patsubst %.cpp,%.o,$(wildcard $(SDIR)/*.cpp)) $(patsubst %.cc,%.o,$(wildcard $(SDIR)/*.cc))
+OBJ=$(patsubst $(SDIR)/%,$(ODIR)/%,$(_OBJ))
+
+DEPS:=$(wildcard $(IDIR)/*.h) $(wildcard $(IDIR)/*.hpp)
+
+$(ODIR)/%.o:$(SDIR)/%.cpp $(DEPS)
+	$(CXX) -c -o $@ $< $(CFLAGS) $(LIBS)
+	
+$(ODIR)/%.o:$(SDIR)/%.cc $(DEPS)
+	$(CXX) -c -o $@ $< $(CFLAGS) $(LIBS)
+
+$(OFILE):$(OBJ)
+	$(CXX) -o $@ $^ $(CFLAGS) $(LIBS)
+
+.PHONY:clean
+
+clean:
+	rm -f $(ODIR)/*.o *~ core $(INCDIR)/*~ $(OFILE)
