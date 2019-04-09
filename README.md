@@ -4,7 +4,7 @@ These Makefiles are meant to make creation, organisation and compilation of Open
 The following steps describe the way to use the makefiles.
 
 1.  Before starting a project, create a workspace folder for all your opencv projects.
-2.  Copy the demo_makefile, Makefile, and the readme.txt into the workspace primary folder.
+2.  Copy the demo_makefile, and Makefile into the workspace primary folder.
 3.  In order to create an opencv project, change your working directory to the workspace primary folder in the terminal
 4.  Type "make opencv_tf_project name=<your_project_name>" without the quotes and your project_name instead of  "<your_project_name>"
 5.  Make sure you don't have any whitespaces in your project name.
