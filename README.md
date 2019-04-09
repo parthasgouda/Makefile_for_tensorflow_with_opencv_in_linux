@@ -1,4 +1,4 @@
-# Makefile_for_opencv_linux
+# Makefile_for_tensorflow_with_opencv_in_linux
 These Makefiles are meant to make creation, organisation and compilation of Opencv and tensorflow projects on linux convenient with g++ compiler.
 
 The following steps describe the way to use the makefiles.
